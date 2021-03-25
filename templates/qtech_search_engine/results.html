@@ -151,6 +151,7 @@
           <tr>
             <th scope="col">Keyword</th>
             <th scope="col">Search Result</th>
+            <th scope="col">Searched By</th>
           </tr>
         </thead>
         <tbody>
@@ -158,9 +159,11 @@
                 <tr>
                     <td>{{i.keyword}}</td>
                     <td>{{i.description}}</td>
-                    
+                    {% for j in i.user.all %}
+                        <td>{{j.username}}</td>
+                    {% endfor %}
                 </tr>
-          {% endfor %}
+            {% endfor %}
         </tbody>
       </table>
     
@@ -173,21 +176,25 @@
             <th>User who searched</th>
             <th>Times this has been Searched</th>
         </tr>
-        {% for i in users %}
-        <tr style="">
-            <td>{{i.keyword.keyword}}</td>
-            <td>{{i.keyword.description}}</td>
-            <td>{{i.user.username}}</td>
-            <td>{{i.keyword.times_searched}}</td>
-        </tr>
-        {% endfor %}
         {% for i in keywords %}
-        <tr style="">
-            <td>{{i.keyword}}</td>
-            <td>{{i.description}}</td>
-            <td>N/A</td>
-            <td>{{i.times_searched}}</td>
-        </tr>
+                {% if i.times_searched == 0 %}
+                    <tr style="">
+                        <td>{{i.keyword}}</td>
+                        <td>{{i.description}}</td>
+                        <td>N/A</td>
+                        <td>{{i.times_searched}}</td>
+                    </tr>
+                {% else %}
+                    
+                        <tr style="">
+                            <td>{{i.keyword}}</td>
+                            <td>{{i.description}}</td>
+                            {% for j in i.user.all %}
+                            <td>{{j.username}}</td>
+                            {% endfor %}
+                            <td>{{i.times_searched}}</td>
+                        </tr>
+                {% endif %}
         {% endfor %}
         
     </tbody></table>

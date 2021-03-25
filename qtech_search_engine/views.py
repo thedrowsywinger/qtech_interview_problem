@@ -7,27 +7,22 @@ from qtech_search_engine.models import KeywordDescriptionModel, AllUsers
 
 def HomeView(request):
 
-    searches = KeywordDescriptionModel.objects.all()
-    try:
-        print(request.COOKIES['device'])
-    except:
-        print("No cookie found")
+    keywords = KeywordDescriptionModel.objects.all()
 
     context = {
-        'searches': searches
+        'keywords': keywords,
     }
-
     return render(request, "qtech_search_engine/home.html", context)
 
 
 def SearchView(request):
-
-    # searches = KeywordDescriptionModel.objects.all()
+    
     try:
         print("Trying")
         print(request.COOKIES['device'])
         customer, created = AllUsers.objects.get_or_create(user_sid = request.COOKIES['device'])
         if created is True:
+            print("creating")
             counter = AllUsers.objects.all().count()
             customer.username = "User " + str(counter)
             customer.save()
@@ -39,19 +34,18 @@ def SearchView(request):
                 keyword_searched_counter = keyword_instance.times_searched + 1
                 print(keyword_searched_counter)
                 keyword_instance.times_searched = keyword_searched_counter
-                print("Updating counter")
                 keyword_instance.save()
-                print("Saving instance")
-                for i in KeywordDescriptionModel.objects.filter(keyword=request.POST['keyword_query']):
-                    customer.keyword.add(keyword_instance)
-                customer.save()
-                users = AllUsers.objects.all()
-                keywords = KeywordDescriptionModel.objects.filter(times_searched=0)
+                
+                print("Updated counter")
+                
+                keyword_instance.user.add(customer)
+                keywords = KeywordDescriptionModel.objects.all()
                 searches = KeywordDescriptionModel.objects.filter(keyword=request.POST['keyword_query'])
+                
+                
 
                 context = {
-                    'users': users,
-                    'keyword': keywords,
+                    'keywords': keywords,
                     'searches': searches
                 }
                 return render(request, "qtech_search_engine/results.html", context)
@@ -60,8 +54,6 @@ def SearchView(request):
     except:
         print("No cookie found")
 
-    # customer, created = Customer.objects.get_or_create(device=device)
-
     context = {
 
     }
@@ -69,11 +61,9 @@ def SearchView(request):
     return render(request, "qtech_search_engine/search.html", context)
 
 def TestView(request):
-    users = AllUsers.objects.all()
-    keywords = KeywordDescriptionModel.objects.filter(times_searched=0)
+    keywords = KeywordDescriptionModel.objects.all()
 
     context = {
-        'users': users,
-        'keyword': keywords,
+        'keywords': keywords,
     }
-    return render(request, "qtech_search_engine/test3.html", context)
+    return render(request, "qtech_search_engine/test.html", context)
