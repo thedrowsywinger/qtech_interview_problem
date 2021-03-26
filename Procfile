@@ -1,0 +1,1 @@
+web: gunicorn qtech_interview_problem.wsgi --log-file -
