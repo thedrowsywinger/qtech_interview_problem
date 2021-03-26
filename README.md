@@ -15,15 +15,15 @@ python manage.py runserver
 
 ## Homepage
 Go to : http://127.0.0.1:8000/
-![home page](./images_for_readme/home.png)
+![home page](./images_for_readme/home.PNG)
 
 ## To Search
 Go to : http://127.0.0.1:8000/
-![search page](./images_for_readme/search.png)
+![search page](./images_for_readme/search.PNG)
 
 And results:
 
-![results page](./images_for_readme/results.png)
+![results page](./images_for_readme/results.PNG)
 
 ## Heroku
 I haven't configured everything on heroku yet, but I hope to publish everything on the following url: https://qtech-interview-problem.herokuapp.com/
