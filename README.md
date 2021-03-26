@@ -26,4 +26,4 @@ And results:
 ![results page](./images_for_readme/results.PNG)
 
 ## Heroku
-I haven't configured everything on heroku yet, but I hope to publish everything on the following url: https://qtech-interview-problem.herokuapp.com/
+I have the published the current updates on the following url: https://qtech-interview-problem.herokuapp.com/
