@@ -25,7 +25,7 @@ SECRET_KEY = '#ffn%0*^c3ev-y9p3@a_7jhyq8sy$97msfqo&i6(nm&#jvuoq!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['qtech-interview-problem.herokuapp.com']
 
 
 # Application definition
