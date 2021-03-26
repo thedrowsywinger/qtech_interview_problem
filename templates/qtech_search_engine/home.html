@@ -166,16 +166,16 @@
                         <td>{{i.times_searched}}</td>
                     </tr>
                 {% else %}
-                    
+                  {% for j in i.user.all %}
                         <tr style="">
                             <td>{{i.keyword}}</td>
                             <td>{{i.description}}</td>
-                            {% for j in i.user.all %}
+                            
                             <td>{{j.username}}</td>
-                            {% endfor %}
+                            
                             <td>{{i.times_searched}}</td>
                         </tr>
-                    
+                  {% endfor %}
                 {% endif %}
             {% endfor %}
             

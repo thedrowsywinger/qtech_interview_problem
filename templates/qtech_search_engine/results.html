@@ -187,14 +187,16 @@
                     </tr>
                 {% else %}
                     
-                        <tr style="">
-                            <td>{{i.keyword}}</td>
-                            <td>{{i.description}}</td>
-                            {% for j in i.user.all %}
-                            <td>{{j.username}}</td>
-                            {% endfor %}
-                            <td>{{i.times_searched}}</td>
-                        </tr>
+                  {% for j in i.user.all %}
+                    <tr style="">
+                        <td>{{i.keyword}}</td>
+                        <td>{{i.description}}</td>
+                        
+                        <td>{{j.username}}</td>
+                        
+                        <td>{{i.times_searched}}</td>
+                    </tr>
+                  {% endfor %}
                 {% endif %}
         {% endfor %}
         
