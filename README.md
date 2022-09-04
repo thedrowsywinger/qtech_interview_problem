@@ -1,8 +1,40 @@
 # Qtech Solutions 
 ## Interview Problem
+Step 1: Create an ORM Data Model in Django for User Search History in an imagined Search Engine. Could be Google, who knows :P You can store anything[fields] you want. Like, search keyword, which used searched, what time.. What results came after searching.. etc.. Add as many fields as you like. 
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
-AngularJS-powered HTML5 Markdown editor.
+Step 2: Dump those results in a view[html/css] and add some filters like, 
+Keywords with count, user , time range with checkbox. Imagine it like this
+
+All Keywords:
+[ ] Keyword 1 (20 times found)
+[ ]  Keyword 2 (12 times found)
+[ ]  Keyword 3 (8 times found)
+
+All Users:
+[ ] User 1
+[ ] User 2
+[ ] User 3
+
+Time Range:
+[ ] See data from yesterday
+[ ] See data from last week
+[ ] see data from last month 
+
+Select Date:
+[ Enter start date]
+[ Enter end date ]
+
+More filters:
+[ ]
+[ ]
+
+Note: [ ] those are checkboxes I mean. 
+
+Step 3: If I select any of those checkboxes, results will be filtered using some JS, without reloading the page. If I select multiple checkboxes, results will be filtered based on that.
+
+Total Task Marks:
+13.5
+
 
 ## Installation
 
